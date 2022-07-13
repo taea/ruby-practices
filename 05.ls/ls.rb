@@ -22,6 +22,6 @@ def display_files(files, column)
   end
 end
 
-current_dir = File.absolute_path('.')
+current_dir = '.'
 find_files(current_dir, files)
 display_files(files, 3)
