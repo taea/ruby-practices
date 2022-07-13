@@ -1,11 +1,12 @@
 # frozen_string_literal: true
 
-files = []
-def find_files(dir, files)
+def find_files(dir)
+  array = Array.new
   Dir.foreach(dir) do |file|
     next if /^\./ =~ file
-    files << file
+    array << file
   end
+  array
 end
 
 def display_files(files, column)
@@ -20,5 +21,5 @@ def display_files(files, column)
 end
 
 current_dir = '.'
-find_files(current_dir, files)
+files = find_files(current_dir)
 display_files(files, 3)
