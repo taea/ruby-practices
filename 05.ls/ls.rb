@@ -6,7 +6,7 @@ def find_files(dir)
     next if /^\./ =~ file
     array << file
   end
-  array
+  array.sort
 end
 
 def display_files(files, column)
