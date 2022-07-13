@@ -1,13 +1,10 @@
 # frozen_string_literal: true
 
-require 'find'
-
 files = []
 def find_files(dir, files)
-  Find.find(dir) do |file|
-    file_name = File.basename(file)
-    next if /^\./ =~ file_name || File.basename(dir) == file_name
-    files << file_name
+  Dir.foreach(dir) do |file|
+    next if /^\./ =~ file
+    files << file
   end
 end
 
