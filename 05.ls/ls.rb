@@ -7,15 +7,7 @@ def find_files(dir, files)
   Find.find(dir) do |file|
     file_name = File.basename(file)
     next if /^\./ =~ file_name || File.basename(dir) == file_name
-
-    files << case File.ftype(file)
-             when 'directory'
-               "#{file_name}/"
-             when 'link'
-               "#{file_name}@"
-             else
-               file_name
-             end
+    files << file_name
   end
 end
 
