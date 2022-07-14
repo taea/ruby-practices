@@ -19,12 +19,7 @@ def max_length(array)
 end
 
 def split_into_column(files, files_per_column)
-  columns = []
-  files.each_slice(files_per_column) do |file|
-    files_in_column = file.to_a
-    columns << files_in_column
-  end
-  columns
+  columns = files.each_slice(files_per_column).map { |file| file.to_a }
 end
 
 def display_files(columns, files_per_column, column_number, max_length)
