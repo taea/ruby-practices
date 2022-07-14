@@ -28,19 +28,21 @@ def split_into_column(files, files_per_column)
   columns
 end
 
+def display_files(columns, files_per_column, column_number, max_length)
+  0.upto(files_per_column - 1).each do |line|
+    0.upto(column_number - 1).each do |n|
+      if columns[n][line]
+        print columns[n][line].ljust(max_length + 1)
+      end
+    end
+    print "\n"
+  end
+end
+
 current_dir = '.'
 column_number = 3
 files = find_files(current_dir)
 files_per_column = files.length / column_number + 1
 max_length = max_length(files)
 columns = split_into_column(files, files_per_column)
-# display_files(columns, files_per_column)
-
-0.upto(files_per_column - 1).each do |line|
-  0.upto(column_number - 1).each do |n|
-    if columns[n][line]
-      print columns[n][line].ljust(max_length + 1)
-    end
-  end
-  print "\n"
-end
+display_files(columns, files_per_column, column_number, max_length)
