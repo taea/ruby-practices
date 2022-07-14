@@ -39,11 +39,7 @@ end
 current_dir = '.'
 column_number = 3
 files = find_files(current_dir)
-
-files_per_column = files.length / column_number
-unless files.length % column_number == 0
-  files_per_column += 1
-end
+files_per_column = (files.length % column_number).zero? ? files.length / column_number : files.length / column_number + 1
 max_length = max_length(files)
 columns = split_into_column(files, files_per_column)
 display_files(columns, files_per_column, column_number, max_length)
