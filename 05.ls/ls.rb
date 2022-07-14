@@ -20,9 +20,7 @@ end
 
 def display_files(array, rows, columns, length)
   rows.times do |row|
-    columns.times do |col|
-      print array[col][row]&.ljust(length + 1)
-    end
+    columns.times { |col| print array[col][row]&.ljust(length + 1) }
     print "\n"
   end
 end
