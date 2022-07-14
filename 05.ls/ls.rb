@@ -10,14 +10,6 @@ def find_files(dir)
   array.sort
 end
 
-def max_length(array)
-  max = 0
-  array.each do |item|
-    max = item.length if max < item.length
-  end
-  max
-end
-
 def display_files(array, rows, columns, length)
   rows.times do |row|
     columns.times { |col| print array[col][row]&.ljust(length + 1) }
@@ -29,6 +21,6 @@ current_dir = '.'
 columns_number = 3
 files = find_files(current_dir)
 rows_number = files.length / columns_number + ((files.length % columns_number).zero? ? 0 : 1)
-max_length = max_length(files)
+max_length = files.map { |item| item.length }.max
 columns_array = files.each_slice(rows_number).map { |file| file.to_a }
 display_files(columns_array, rows_number, columns_number, max_length)
