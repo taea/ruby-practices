@@ -19,18 +19,40 @@ def max_length(array)
   max
 end
 
-def display_files(files, column, max_length)
+def split_into_column(files, column)
   files_per_column = files.length / column + 1
-  0.upto(files_per_column).each do |line|
-    files.each_slice(files_per_column) do |file|
-      columns = file.to_a
-      print columns[line].ljust(max_length + 1) if columns[line]
-    end
-    print "\n" unless line == files_per_column - 1
+  columns = []
+  files.each_slice(files_per_column) do |file|
+    files_in_column = file.to_a
+    columns << files_in_column
   end
+  columns
 end
+
+def display_files(columns, column, max_length)
+  files_per_column = files.length / column + 1
+end
+# def display_files(files, column, max_length)
+#   files_per_column = files.length / column + 1
+#   files.each_slice(files_per_column) do |file|
+#     columns = file.to_a
+#     p columns
+#   end
+# end
+
+# def display_files(files, column, max_length)
+#   files_per_column = files.length / column + 1
+#   0.upto(files_per_column).each do |line|
+#     files.each_slice(files_per_column) do |file|
+#       columns = file.to_a
+#       print columns[line].ljust(max_length + 1) if columns[line]
+#     end
+#     print "\n" unless line == files_per_column - 1
+#   end
+# end
 
 current_dir = '.'
 files = find_files(current_dir)
 max_length = max_length(files)
-display_files(files, 3, max_length)
+p columns = split_into_column(files, 3)
+# display_files(columns, 3, max_length)
