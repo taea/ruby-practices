@@ -1,12 +1,9 @@
 # frozen_string_literal: true
 
 def find_files(dir)
-  array = []
-  Dir.foreach(dir) do |file|
-    next if file.match?(/^\./)
-
-    array << file
-  end
+  array = Dir.foreach(dir).map do |file|
+    file unless file.match?(/^\./)
+  end.compact
   array.sort
 end
 
