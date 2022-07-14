@@ -15,8 +15,8 @@ def display_files(array, rows, columns, length)
 end
 
 current_dir = '.'
-columns_number = 3
 files = find_files(current_dir)
+columns_number = 3
 rows_number = files.length / columns_number + ((files.length % columns_number).zero? ? 0 : 1)
 max_length = files.map(&:length).max
 columns_array = files.each_slice(rows_number).map(&:to_a)
