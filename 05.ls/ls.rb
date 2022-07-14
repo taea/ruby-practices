@@ -36,27 +36,11 @@ max_length = max_length(files)
 columns = split_into_column(files, files_per_column)
 # display_files(columns, files_per_column)
 
-print columns[0][0].ljust(max_length + 1)
-print columns[1][0].ljust(max_length + 1)
-print columns[2][0].ljust(max_length + 1)
-print "\n"
-print columns[0][1].ljust(max_length + 1)
-print columns[1][1].ljust(max_length + 1)
-print columns[2][1].ljust(max_length + 1)
-print "\n"
-print columns[0][2].ljust(max_length + 1)
-print columns[1][2].ljust(max_length + 1)
-print columns[2][2].ljust(max_length + 1)
-print "\n"
-print columns[0][3].ljust(max_length + 1)
-print columns[1][3].ljust(max_length + 1)
-print columns[2][3].ljust(max_length + 1)
-print "\n"
-print columns[0][4].ljust(max_length + 1)
-print columns[1][4].ljust(max_length + 1)
-print columns[2][4].ljust(max_length + 1)
-print "\n"
-print columns[0][5].ljust(max_length + 1)
-print columns[1][5].ljust(max_length + 1)
-print columns[2][5].ljust(max_length + 1)
-print "\n"
+0.upto(files_per_column - 1).each do |line|
+  0.upto(column_number - 1).each do |n|
+    if columns[n][line]
+      print columns[n][line].ljust(max_length + 1)
+    end
+  end
+  print "\n"
+end
