@@ -18,19 +18,19 @@ def max_length(array)
   max
 end
 
-def display_files(columns, files_per_column, column_number, max_length)
-  files_per_column.times do |line|
-    column_number.times do |n|
-      print columns[n][line].ljust(max_length + 1) if columns[n][line]
+def display_files(array, rows, columns, length)
+  rows.times do |row|
+    columns.times do |col|
+      print array[col][row].ljust(length + 1) if array[col][row]
     end
     print "\n"
   end
 end
 
 current_dir = '.'
-column_number = 3
+columns_number = 3
 files = find_files(current_dir)
-files_per_column = files.length / column_number + ((files.length % column_number).zero? ? 0 : 1)
+rows_number = files.length / columns_number + ((files.length % columns_number).zero? ? 0 : 1)
 max_length = max_length(files)
-columns = files.each_slice(files_per_column).map { |file| file.to_a }
-display_files(columns, files_per_column, column_number, max_length)
+columns_array = files.each_slice(rows_number).map { |file| file.to_a }
+display_files(columns_array, rows_number, columns_number, max_length)
