@@ -21,7 +21,7 @@ end
 def display_files(array, rows, columns, length)
   rows.times do |row|
     columns.times do |col|
-      print array[col][row].ljust(length + 1) if array[col][row]
+      print array[col][row]&.ljust(length + 1)
     end
     print "\n"
   end
