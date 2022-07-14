@@ -28,31 +28,35 @@ def split_into_column(files, files_per_column)
   columns
 end
 
-def display_files(columns, column_number, max_length)
-end
-# def display_files(files, column, max_length)
-#   files_per_column = files.length / column + 1
-#   files.each_slice(files_per_column) do |file|
-#     columns = file.to_a
-#     p columns
-#   end
-# end
-
-# def display_files(files, column, max_length)
-#   files_per_column = files.length / column + 1
-#   0.upto(files_per_column).each do |line|
-#     files.each_slice(files_per_column) do |file|
-#       columns = file.to_a
-#       print columns[line].ljust(max_length + 1) if columns[line]
-#     end
-#     print "\n" unless line == files_per_column - 1
-#   end
-# end
-
 current_dir = '.'
 column_number = 3
 files = find_files(current_dir)
 files_per_column = files.length / column_number + 1
 max_length = max_length(files)
-p columns = split_into_column(files, files_per_column)
-# display_files(columns, 3, max_length)
+columns = split_into_column(files, files_per_column)
+# display_files(columns, files_per_column)
+
+print columns[0][0].ljust(max_length + 1)
+print columns[1][0].ljust(max_length + 1)
+print columns[2][0].ljust(max_length + 1)
+print "\n"
+print columns[0][1].ljust(max_length + 1)
+print columns[1][1].ljust(max_length + 1)
+print columns[2][1].ljust(max_length + 1)
+print "\n"
+print columns[0][2].ljust(max_length + 1)
+print columns[1][2].ljust(max_length + 1)
+print columns[2][2].ljust(max_length + 1)
+print "\n"
+print columns[0][3].ljust(max_length + 1)
+print columns[1][3].ljust(max_length + 1)
+print columns[2][3].ljust(max_length + 1)
+print "\n"
+print columns[0][4].ljust(max_length + 1)
+print columns[1][4].ljust(max_length + 1)
+print columns[2][4].ljust(max_length + 1)
+print "\n"
+print columns[0][5].ljust(max_length + 1)
+print columns[1][5].ljust(max_length + 1)
+print columns[2][5].ljust(max_length + 1)
+print "\n"
