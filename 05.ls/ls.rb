@@ -12,9 +12,7 @@ end
 def max_length(array)
   max = 0
   array.each do |item|
-    if max < item.length
-      max = item.length
-    end
+    max = item.length if max < item.length
   end
   max
 end
@@ -29,11 +27,9 @@ def split_into_column(files, files_per_column)
 end
 
 def display_files(columns, files_per_column, column_number, max_length)
-  0.upto(files_per_column - 1).each do |line|
-    0.upto(column_number - 1).each do |n|
-      if columns[n][line]
-        print columns[n][line].ljust(max_length + 1)
-      end
+  files_per_column.times do |line|
+    column_number.times do |n|
+      print columns[n][line].ljust(max_length + 1) if columns[n][line]
     end
     print "\n"
   end
