@@ -7,7 +7,10 @@ def find_files(dir)
   array.sort
 end
 
-def display_files(array, rows, columns, length)
+def display_files(files, columns)
+  rows   = files.length / columns + ((files.length % columns).zero? ? 0 : 1)
+  length = files.map(&:length).max
+  array  = files.each_slice(rows).map(&:to_a)
   rows.times do |row|
     columns.times { |col| print array[col][row]&.ljust(length + 1) }
     print "\n"
@@ -15,8 +18,6 @@ def display_files(array, rows, columns, length)
 end
 
 current_dir    = '.'
-files          = find_files(current_dir)
 columns_number = 3
-rows_number    = files.length / columns_number + ((files.length % columns_number).zero? ? 0 : 1)
-max_length     = files.map(&:length).max
-display_files(files.each_slice(rows_number).map(&:to_a), rows_number, columns_number, max_length)
+files          = find_files(current_dir)
+display_files(files, columns_number)
