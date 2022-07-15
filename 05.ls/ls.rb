@@ -7,7 +7,7 @@ def find_files(dir)
   array.sort
 end
 
-def display_files(files, columns)
+def show_files(files, columns)
   rows   = files.length / columns + ((files.length % columns).zero? ? 0 : 1)
   length = files.map(&:length).max
   array  = files.each_slice(rows).map(&:to_a)
@@ -20,4 +20,4 @@ end
 current_dir    = '.'
 columns_number = 3
 files          = find_files(current_dir)
-display_files(files, columns_number)
+show_files(files, columns_number)
