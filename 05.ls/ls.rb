@@ -17,7 +17,5 @@ def show(files, columns)
   end
 end
 
-current_dir    = '.'
-columns_number = 3
-files          = find(current_dir)
-show(files, columns_number)
+files = find('.')
+show(files, 3)
