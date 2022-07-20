@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 def find(dir)
-  Dir.foreach(dir).map { |file| file unless file.match?(/^\./) }.compact.sort
+  Dir.foreach(dir).select { |file| file unless file.start_with?(/^\./) }.sort
 end
 
 def show(files, columns)
