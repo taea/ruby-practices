@@ -7,7 +7,7 @@ end
 def show(files, columns)
   rows   = files.length / columns + ((files.length % columns).zero? ? 0 : 1)
   length = files.map(&:length).max
-  array  = files.each_slice(rows).map(&:to_a)
+  array  = files.each_slice(rows).to_a
   rows.times do |row|
     columns.times { |col| print array[col][row]&.ljust(length + 1) }
     print "\n"
