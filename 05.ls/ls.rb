@@ -9,7 +9,9 @@ def show(files, columns)
   length = files.map(&:length).max
   matrix = files.each_slice(rows).to_a
   rows.times do |row|
-    columns.times { |col| print matrix[col][row]&.ljust(length + 1) }
+    columns.times do |col|
+      print matrix[col][row]&.ljust(length + 1)
+    end
     print "\n"
   end
 end
