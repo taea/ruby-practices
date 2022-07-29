@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
+require 'optparse'
+
 def find(dir)
-  Dir.foreach(dir).reject { |file| file.start_with?('.') }.sort
+  files = Dir.foreach(dir)
+  ARGV.getopts('a')['a'] ? files.sort : files.reject { |file| file.start_with?('.') }.sort
 end
 
 def show(files, columns)
