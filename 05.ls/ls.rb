@@ -2,9 +2,9 @@
 
 require 'optparse'
 
-def find(dir)
+def find(dir, option)
   files = Dir.foreach(dir)
-  ARGV.getopts('a')['a'] ? files.sort : files.reject { |file| file.start_with?('.') }.sort
+  option ? files.sort : files.reject { |file| file.start_with?('.') }.sort
 end
 
 def show(files, columns)
@@ -19,5 +19,5 @@ def show(files, columns)
   end
 end
 
-files = find('.')
+files = find('.', ARGV.getopts('a')['a'])
 show(files, 3)
