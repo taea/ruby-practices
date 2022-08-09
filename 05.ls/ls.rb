@@ -2,9 +2,9 @@
 
 require 'optparse'
 
-def find(dir, option)
+def find(dir, hidden_file)
   files = Dir.foreach(dir)
-  if option
+  if hidden_file
     files.sort
   else
     files.reject { |file| file.start_with?('.') }.sort
