@@ -23,5 +23,6 @@ def show(files, columns)
   end
 end
 
-files = find('.', ARGV.getopts('a')['a'])
+options = { a: ARGV.getopts('a')['a'] }
+files = find('.', options[:a])
 show(files, 3)
