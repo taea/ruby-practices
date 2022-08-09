@@ -4,7 +4,11 @@ require 'optparse'
 
 def find(dir, option)
   files = Dir.foreach(dir)
-  option ? files.sort : files.reject { |file| file.start_with?('.') }.sort
+  if option
+    files.sort
+  else
+    files.reject { |file| file.start_with?('.') }.sort
+  end
 end
 
 def show(files, columns)
