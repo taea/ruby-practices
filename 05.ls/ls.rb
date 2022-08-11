@@ -5,10 +5,10 @@ require 'optparse'
 def find(dir, hidden_file)
   files = Dir.foreach(dir)
   if hidden_file
-    files.sort
+    files
   else
-    files.reject { |file| file.start_with?('.') }.sort
-  end
+    files.reject { |file| file.start_with?('.') }
+  end.sort
 end
 
 def show(files, columns)
