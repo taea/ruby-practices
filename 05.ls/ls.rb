@@ -3,12 +3,12 @@
 require 'optparse'
 
 def find(dir, hidden_file)
-  files = Dir.foreach(dir)
+  files = Dir.foreach(dir).sort
   if hidden_file
     files
   else
     files.reject { |file| file.start_with?('.') }
-  end.sort
+  end
 end
 
 def show(files, columns)
