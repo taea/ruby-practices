@@ -1,7 +1,14 @@
 # frozen_string_literal: true
 
-def find(dir)
-  Dir.foreach(dir).reject { |file| file.start_with?('.') }.sort
+require 'optparse'
+
+def find(dir, hidden_file)
+  files = Dir.foreach(dir).sort
+  if hidden_file
+    files
+  else
+    files.reject { |file| file.start_with?('.') }
+  end
 end
 
 def show(files, columns)
@@ -16,5 +23,6 @@ def show(files, columns)
   end
 end
 
-files = find('.')
+options = ARGV.getopts('a')
+files = find('.', options['a'])
 show(files, 3)
