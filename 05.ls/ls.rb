@@ -24,8 +24,5 @@ def show(files, columns)
 end
 
 options = ARGV.getopts('a', 'r')
-files = find('.', options['a'])
-if options['r']
-  files = files.reverse
-end
+files = find('.', options['a']).tap { |found_files| break found_files.reverse if options['r'] }
 show(files, 3)
