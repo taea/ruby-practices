@@ -11,6 +11,12 @@ def find(dir, hidden_file)
   end
 end
 
+def reverse(files, reverse)
+  if reverse
+    files = files.reverse
+  end
+end
+
 def show(files, columns)
   rows   = files.length / columns + ((files.length % columns).zero? ? 0 : 1)
   length = files.map(&:length).max
@@ -24,5 +30,6 @@ def show(files, columns)
 end
 
 options = ARGV.getopts('a', 'r')
-files = find('.', options['a']).tap { |found_files| break found_files.reverse if options['r'] }
+files = find('.', options['a'])
+reverse(files, options['r'])
 show(files, 3)
