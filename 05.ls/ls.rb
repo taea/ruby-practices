@@ -11,8 +11,8 @@ def find(dir, hidden_file)
   end
 end
 
-def reverse(files, option)
-  if option
+def order(files, reverse)
+  if reverse
     files.reverse
   else
     files
@@ -33,5 +33,5 @@ end
 
 options = ARGV.getopts('a', 'r')
 files = find('.', options['a'])
-files = reverse(files, options['r'])
+files = order(files, options['r'])
 show(files, 3)
