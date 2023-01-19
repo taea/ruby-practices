@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 def find(dir)
-  Dir.foreach(dir).map { |f| f unless f.start_with?('.') }.compact.sort
+  Dir.foreach(dir).reject { |f| f.start_with?('.') }.sort
 end
 
 def show(files, max_cols)
