@@ -4,22 +4,22 @@ def find(dir)
   Dir.foreach(dir).reject { |f| f.start_with?('.') }.sort
 end
 
-def show(files, max_cols)
-  rows   = files.length / max_cols + ((files.length % max_cols).zero? ? 0 : 1)
-  cols   =
+def show(files, max_cols_count)
+  rows_count = files.length / max_cols_count + ((files.length % max_cols_count).zero? ? 0 : 1)
+  cols_count =
     case files.length
-    when max_cols + 1
-      max_cols - 1
-    when 0..max_cols
+    when max_cols_count + 1
+      max_cols_count - 1
+    when 0..max_cols_count
       files.length
     else
-      max_cols
+      max_cols_count
     end
-  matrix = files.each_slice(rows).to_a
-  length = files.map(&:length).max
-  rows.times do |row|
-    cols.times do |col|
-      print matrix[col][row]&.ljust(length + 1)
+  matrix     = files.each_slice(rows_count).to_a
+  max_length = files.map(&:length).max
+  rows_count.times do |row|
+    cols_count.times do |col|
+      print matrix[col][row]&.ljust(max_length + 1)
     end
     print "\n"
   end
