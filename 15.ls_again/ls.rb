@@ -5,7 +5,7 @@ def find(dir)
 end
 
 def show(files, max_cols_count)
-  rows_count = files.length / max_cols_count + ((files.length % max_cols_count).zero? ? 0 : 1)
+  rows_count = (files.length.to_f / max_cols_count.to_f).ceil
   cols_count = files.length < max_cols_count ? files.length : max_cols_count
   matrix     = files.each_slice(rows_count).to_a
   max_length = files.map(&:length).max
