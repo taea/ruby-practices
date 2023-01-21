@@ -8,7 +8,7 @@ def show(dir, max_cols_count)
   max_length = files.map(&:length).max
   rows_count.times do |row|
     cols_count.times do |col|
-      print matrix[col][row]&.ljust(max_length + 1) unless matrix[col] == nil
+      print matrix[col][row]&.ljust(max_length + 1) unless matrix[col].nil?
     end
     print "\n"
   end
