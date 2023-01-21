@@ -1,10 +1,7 @@
 # frozen_string_literal: true
 
-def find(dir)
-  Dir.foreach(dir).reject { |f| f.start_with?('.') }.sort
-end
-
-def show(files, max_cols_count)
+def show(dir, max_cols_count)
+  files      = Dir.foreach(dir).reject { |f| f.start_with?('.') }.sort
   rows_count = (files.length.to_f / max_cols_count).ceil
   cols_count = files.length < max_cols_count ? files.length : max_cols_count
   matrix     = files.each_slice(rows_count).to_a
@@ -20,5 +17,4 @@ end
 COLUMNS = 3
 
 target = ARGV.empty? ? '.' : ARGV[0]
-files = find(target)
-show(files, COLUMNS)
+show(target, COLUMNS)
