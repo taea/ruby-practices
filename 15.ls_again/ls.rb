@@ -13,7 +13,7 @@ end
 def show(filenames)
   filenames.each do |row|
     print row
-    print "\n" unless row == filenames.last
+    print "\n" if row != filenames.last
   end
 end
 
