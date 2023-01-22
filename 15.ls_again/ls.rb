@@ -10,7 +10,7 @@ def filenames(dir, max_cols_count)
   end
 end
 
-def show(filenames)
+def display(filenames)
   filenames.each do |row|
     print row
     print "\n" if row != filenames.last
@@ -20,4 +20,4 @@ end
 COLUMNS = 3
 
 target = ARGV.empty? ? '.' : ARGV[0]
-show(filenames(target, COLUMNS))
+display(filenames(target, COLUMNS))

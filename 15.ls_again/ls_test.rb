@@ -11,7 +11,7 @@ class LsTest < Minitest::Test
     expected = <<~TEXT.chomp
       1
     TEXT
-    assert_output(expected) { show(filenames(dir, COLUMNS)) }
+    assert_output(expected) { display(filenames(dir, COLUMNS)) }
   end
 
   def test_2_files
@@ -19,7 +19,7 @@ class LsTest < Minitest::Test
     expected = <<~TEXT.chomp
       1 2
     TEXT
-    assert_output(expected) { show(filenames(dir, COLUMNS)) }
+    assert_output(expected) { display(filenames(dir, COLUMNS)) }
   end
 
   def test_3_files
@@ -27,7 +27,7 @@ class LsTest < Minitest::Test
     expected = <<~TEXT.chomp
       1 2 3
     TEXT
-    assert_output(expected) { show(filenames(dir, COLUMNS)) }
+    assert_output(expected) { display(filenames(dir, COLUMNS)) }
   end
 
   def test_4_files
@@ -36,7 +36,7 @@ class LsTest < Minitest::Test
       1 3
       2 4
     TEXT
-    assert_output(expected) { show(filenames(dir, COLUMNS)) }
+    assert_output(expected) { display(filenames(dir, COLUMNS)) }
   end
 
   def test_5_files
@@ -45,7 +45,7 @@ class LsTest < Minitest::Test
       1 3 5
       2 4
     TEXT
-    assert_output(expected) { show(filenames(dir, COLUMNS)) }
+    assert_output(expected) { display(filenames(dir, COLUMNS)) }
   end
 
   def test_6_files
@@ -54,7 +54,7 @@ class LsTest < Minitest::Test
       1 3 5
       2 4 6
     TEXT
-    assert_output(expected) { show(filenames(dir, COLUMNS)) }
+    assert_output(expected) { display(filenames(dir, COLUMNS)) }
   end
 
   def test_7_files
@@ -64,7 +64,7 @@ class LsTest < Minitest::Test
       2 5
       3 6
     TEXT
-    assert_output(expected) { show(filenames(dir, COLUMNS)) }
+    assert_output(expected) { display(filenames(dir, COLUMNS)) }
   end
 
   def test_8_files
@@ -74,7 +74,7 @@ class LsTest < Minitest::Test
       2 5 8
       3 6
     TEXT
-    assert_output(expected) { show(filenames(dir, COLUMNS)) }
+    assert_output(expected) { display(filenames(dir, COLUMNS)) }
   end
 
   def test_various_file_names
@@ -84,6 +84,6 @@ class LsTest < Minitest::Test
       esa             ls.rb           test-dir2のコピー
       folder          test-dir1       test-dir2のコピー2
     TEXT
-    assert_output(expected) { show(filenames(dir, COLUMNS)) }
+    assert_output(expected) { display(filenames(dir, COLUMNS)) }
   end
 end
