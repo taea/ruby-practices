@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-def filename(dir, max_cols_count)
+def filenames(dir, max_cols_count)
   files      = Dir.foreach(dir).reject { |f| f.start_with?('.') }.sort
   rows_count = (files.length.to_f / max_cols_count).ceil
   matrix     = files.each_slice(rows_count).to_a
@@ -20,5 +20,4 @@ end
 COLUMNS = 3
 
 target = ARGV.empty? ? '.' : ARGV[0]
-filenames = filename(target, COLUMNS)
-show(filenames)
+show(filenames(target, COLUMNS))
