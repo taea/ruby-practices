@@ -7,7 +7,7 @@ COLUMNS  = 3
 
 class LsTest < Minitest::Test
   def test_1_files
-    dir = TEST_DIR + '1'
+    dir = "#{TEST_DIR}1"
     expected = <<~TEXT.chomp
       1
     TEXT
@@ -16,7 +16,7 @@ class LsTest < Minitest::Test
   end
 
   def test_2_files
-    dir = TEST_DIR + '2'
+    dir = "#{TEST_DIR}2"
     expected = <<~TEXT.chomp
       1 2
     TEXT
@@ -25,7 +25,7 @@ class LsTest < Minitest::Test
   end
 
   def test_3_files
-    dir = TEST_DIR + '3'
+    dir = "#{TEST_DIR}3"
     expected = <<~TEXT.chomp
       1 2 3
     TEXT
@@ -34,7 +34,7 @@ class LsTest < Minitest::Test
   end
 
   def test_4_files
-    dir = TEST_DIR + '4'
+    dir = "#{TEST_DIR}4"
     expected = <<~TEXT.chomp
       1 3
       2 4
@@ -44,7 +44,7 @@ class LsTest < Minitest::Test
   end
 
   def test_5_files
-    dir = TEST_DIR + '5'
+    dir = "#{TEST_DIR}5"
     expected = <<~TEXT.chomp
       1 3 5
       2 4
@@ -54,7 +54,7 @@ class LsTest < Minitest::Test
   end
 
   def test_6_files
-    dir = TEST_DIR + '6'
+    dir = "#{TEST_DIR}6"
     expected = <<~TEXT.chomp
       1 3 5
       2 4 6
@@ -64,7 +64,7 @@ class LsTest < Minitest::Test
   end
 
   def test_7_files
-    dir = TEST_DIR + '7'
+    dir = "#{TEST_DIR}7"
     expected = <<~TEXT.chomp
       1 4 7
       2 5
@@ -75,7 +75,7 @@ class LsTest < Minitest::Test
   end
 
   def test_8_files
-    dir = TEST_DIR + '8'
+    dir = "#{TEST_DIR}8"
     expected = <<~TEXT.chomp
       1 4 7
       2 5 8
@@ -86,7 +86,7 @@ class LsTest < Minitest::Test
   end
 
   def test_various_file_names
-    dir = TEST_DIR + 'long_file_name'
+    dir = "#{TEST_DIR}long_file_name"
     expected = <<~TEXT.chomp
       dir             gb              test-dir2
       esa             ls.rb           test-dir2のコピー
