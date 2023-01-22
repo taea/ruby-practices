@@ -16,7 +16,7 @@ end
 def show(filenames)
   filenames.each do |row|
     row.each { |filename| print filename }
-    print "\n"
+    print "\n" unless row == filenames.last
   end
 end
 
