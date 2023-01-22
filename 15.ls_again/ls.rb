@@ -7,15 +7,15 @@ def filename(dir, max_cols_count)
   max_length = files.map(&:length).max
   filenames  = []
   rows_count.times do |row|
-    rows_filenames = matrix.map { |matrix| matrix[row]&.ljust(max_length + 1) }
-    filenames << rows_filenames.compact
+    rows_filenames = matrix.map { |matrix| matrix[row]&.ljust(max_length + 1) }.join
+    filenames << rows_filenames
   end
   filenames
 end
 
 def show(filenames)
   filenames.each do |row|
-    row.each { |filename| print filename }
+    print row
     print "\n" unless row == filenames.last
   end
 end
