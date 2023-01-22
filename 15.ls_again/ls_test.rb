@@ -6,13 +6,12 @@ TEST_DIR = '../../ls-sample/'
 COLUMNS  = 3
 
 class LsTest < Minitest::Test
-
   def test_1_files
     dir = TEST_DIR + '1'
     expected = <<~TEXT.chomp
       1
     TEXT
-    filenames  = filename(dir, COLUMNS)
+    filenames = filename(dir, COLUMNS)
     assert_output(expected) { show(filenames) }
   end
 
@@ -21,7 +20,7 @@ class LsTest < Minitest::Test
     expected = <<~TEXT.chomp
       1 2
     TEXT
-    filenames  = filename(dir, COLUMNS)
+    filenames = filename(dir, COLUMNS)
     assert_output(expected) { show(filenames) }
   end
 
@@ -30,7 +29,7 @@ class LsTest < Minitest::Test
     expected = <<~TEXT.chomp
       1 2 3
     TEXT
-    filenames  = filename(dir, COLUMNS)
+    filenames = filename(dir, COLUMNS)
     assert_output(expected) { show(filenames) }
   end
 
@@ -50,7 +49,7 @@ class LsTest < Minitest::Test
       1 3 5
       2 4
     TEXT
-    filenames  = filename(dir, COLUMNS)
+    filenames = filename(dir, COLUMNS)
     assert_output(expected) { show(filenames) }
   end
 
@@ -60,7 +59,7 @@ class LsTest < Minitest::Test
       1 3 5
       2 4 6
     TEXT
-    filenames  = filename(dir, COLUMNS)
+    filenames = filename(dir, COLUMNS)
     assert_output(expected) { show(filenames) }
   end
 
@@ -71,7 +70,7 @@ class LsTest < Minitest::Test
       2 5
       3 6
     TEXT
-    filenames  = filename(dir, COLUMNS)
+    filenames = filename(dir, COLUMNS)
     assert_output(expected) { show(filenames) }
   end
 
@@ -82,7 +81,7 @@ class LsTest < Minitest::Test
       2 5 8
       3 6
     TEXT
-    filenames  = filename(dir, COLUMNS)
+    filenames = filename(dir, COLUMNS)
     assert_output(expected) { show(filenames) }
   end
 
@@ -93,7 +92,7 @@ class LsTest < Minitest::Test
       esa             ls.rb           test-dir2のコピー
       folder          test-dir1       test-dir2のコピー2
     TEXT
-    filenames  = filename(dir, COLUMNS)
+    filenames = filename(dir, COLUMNS)
     assert_output(expected) { show(filenames) }
   end
 end
