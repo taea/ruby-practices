@@ -1,8 +1,8 @@
 # frozen_string_literal: true
 
 require 'minitest/autorun'
-require_relative 'ls'
-TEST_DIR = '../../ls-sample/'
+require_relative '../lib/ls'
+TEST_DIR = 'ls-sample/'
 COLUMNS  = 3
 
 class LsTest < Minitest::Test
