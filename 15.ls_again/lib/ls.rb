@@ -11,10 +11,7 @@ def filenames(dir, max_cols_count)
 end
 
 def display(filenames)
-  filenames.each do |row|
-    print row
-    print "\n" if row != filenames.last
-  end
+  print filenames.join("\n")
 end
 
 COLUMNS = 3
