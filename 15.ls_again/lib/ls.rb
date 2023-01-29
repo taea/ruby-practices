@@ -3,10 +3,10 @@
 def filenames(dir, max_cols_count)
   files      = Dir.foreach(dir).reject { |f| f.start_with?('.') }.sort
   rows_count = (files.length.to_f / max_cols_count).ceil
-  matrix     = files.each_slice(rows_count).to_a
+  col_matrix = files.each_slice(rows_count).to_a
   max_length = files.map(&:length).max
   row_matrix = Array.new(rows_count) do |row|
-    matrix.map do |col_arrays|
+    col_matrix.map do |col_arrays|
       col_arrays[row]
     end
   end
