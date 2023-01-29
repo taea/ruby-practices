@@ -15,9 +15,8 @@ def filenames(dir, max_cols_count)
       file&.ljust(max_length + 1)
     end
   end
-  formatted_row.map do |row|
-    row.join.rstrip
-  end
+  joined_row = formatted_row.map { |row| row.join }
+  joined_row.map { |row| row.rstrip }
 end
 
 def display(filenames)
