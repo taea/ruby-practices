@@ -5,8 +5,18 @@ def filenames(dir, max_cols_count)
   rows_count = (files.length.to_f / max_cols_count).ceil
   matrix     = files.each_slice(rows_count).to_a
   max_length = files.map(&:length).max
-  Array.new(rows_count) do |row|
-    matrix.map { |cols_filenames| cols_filenames[row]&.ljust(max_length + 1) }.join.rstrip
+  row_matrix = Array.new(rows_count) do |row|
+    matrix.map do |col_arrays|
+      col_arrays[row]
+    end
+  end
+  formatted_row = row_matrix.map do |row_files|
+    row_files.map do |file|
+      file&.ljust(max_length + 1)
+    end
+  end
+  formatted_row.map do |row|
+    row.join.rstrip
   end
 end
 
