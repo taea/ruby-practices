@@ -1,7 +1,10 @@
 # frozen_string_literal: true
 
-def filenames(dir, max_cols_count)
-  files      = Dir.foreach(dir).reject { |f| f.start_with?('.') }.sort
+def find(dir)
+  Dir.foreach(dir).reject { |f| f.start_with?('.') }.sort
+end
+
+def sort(files, max_cols_count)
   rows_count = (files.length.to_f / max_cols_count).ceil
   col_matrix = files.each_slice(rows_count).to_a
   max_length = files.map(&:length).max
@@ -19,11 +22,13 @@ def filenames(dir, max_cols_count)
   joined_row.map { |row| row.rstrip }
 end
 
-def display(filenames)
-  print filenames.join("\n")
+def display(row_content)
+  print row_content.join("\n")
 end
 
 COLUMNS = 3
 
 target = ARGV.empty? ? '.' : ARGV[0]
-display(filenames(target, COLUMNS))
+files = find(target)
+row_content = sort(files, COLUMNS)
+display(row_content)
