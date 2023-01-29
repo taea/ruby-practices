@@ -29,6 +29,4 @@ end
 COLUMNS = 3
 
 target = ARGV.empty? ? '.' : ARGV[0]
-files = find(target)
-row_content = sort(files, COLUMNS)
-display(row_content)
+display(sort(find(target), COLUMNS))
