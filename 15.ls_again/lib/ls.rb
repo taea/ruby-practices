@@ -4,8 +4,8 @@ def find(dir)
   Dir.foreach(dir).reject { |f| f.start_with?('.') }.sort
 end
 
-def sort(files, max_cols_count)
-  rows_count = (files.length.to_f / max_cols_count).ceil
+def sort(files, cols_count)
+  rows_count = (files.length.to_f / cols_count).ceil
   col_matrix = files.each_slice(rows_count).to_a
   max_length = files.map(&:length).max
   row_matrix = Array.new(rows_count) do |row|
