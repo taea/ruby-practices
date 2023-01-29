@@ -18,8 +18,8 @@ def sort(files, cols_count)
       file&.ljust(max_length + 1)
     end
   end
-  joined_row = formatted_row.map { |row| row.join }
-  joined_row.map { |row| row.rstrip }
+  joined_row = formatted_row.map(&:join)
+  joined_row.map(&:rstrip)
 end
 
 def display(row_content)
