@@ -27,6 +27,5 @@ def display(row_content)
 end
 
 COLUMNS = 3
-
-target = ARGV.empty? ? '.' : ARGV[0]
+target  = ARGV.empty? ? '.' : ARGV[0]
 display(sort(find(target), COLUMNS))
