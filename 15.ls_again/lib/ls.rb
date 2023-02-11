@@ -15,8 +15,7 @@ def transpose(files, cols_count)
   end
 end
 
-def format(files, row_matrix)
-  max_length    = files.map(&:length).max
+def format(row_matrix, max_length)
   formatted_row =
     row_matrix.map do |row_files|
       row_files.map do |file|
@@ -33,7 +32,8 @@ end
 
 COLUMNS = 3
 target  = ARGV.empty? ? '.' : ARGV[0]
+max_length = find(target).map(&:length).max
 row_matrix = transpose(find(target), COLUMNS)
-row_content = format(find(target), row_matrix)
+row_content = format(row_matrix, max_length)
 display(row_content)
 # display(sort(find(target), COLUMNS))
