@@ -7,10 +7,9 @@ end
 def transpose(files, cols_count)
   rows_count = (files.length.to_f / cols_count).ceil
   col_matrix = files.each_slice(rows_count).to_a
-  row_matrix =
-    Array.new(rows_count) do |row|
-      col_matrix.map do |col_arrays|
-        col_arrays[row]
+  Array.new(rows_count) do |row|
+    col_matrix.map do |col_arrays|
+      col_arrays[row]
     end
   end
 end
