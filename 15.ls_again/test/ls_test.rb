@@ -11,7 +11,7 @@ class LsTest < Minitest::Test
       1
     TEXT
     max_length = find(target).map(&:length).max
-    assert_output(expected) { display (format(transpose(find(target), COLUMNS), max_length)) }
+    assert_output(expected) { display(format(transpose(find(target), COLUMNS), max_length)) }
   end
 
   def test_2_files
@@ -20,7 +20,7 @@ class LsTest < Minitest::Test
       1 2
     TEXT
     max_length = find(target).map(&:length).max
-    assert_output(expected) { display (format(transpose(find(target), COLUMNS), max_length)) }
+    assert_output(expected) { display(format(transpose(find(target), COLUMNS), max_length)) }
   end
 
   def test_3_files
@@ -29,7 +29,7 @@ class LsTest < Minitest::Test
       1 2 3
     TEXT
     max_length = find(target).map(&:length).max
-    assert_output(expected) { display (format(transpose(find(target), COLUMNS), max_length)) }
+    assert_output(expected) { display(format(transpose(find(target), COLUMNS), max_length)) }
   end
 
   def test_4_files
@@ -39,7 +39,7 @@ class LsTest < Minitest::Test
       2 4
     TEXT
     max_length = find(target).map(&:length).max
-    assert_output(expected) { display (format(transpose(find(target), COLUMNS), max_length)) }
+    assert_output(expected) { display(format(transpose(find(target), COLUMNS), max_length)) }
   end
 
   def test_5_files
@@ -49,7 +49,7 @@ class LsTest < Minitest::Test
       2 4
     TEXT
     max_length = find(target).map(&:length).max
-    assert_output(expected) { display (format(transpose(find(target), COLUMNS), max_length)) }
+    assert_output(expected) { display(format(transpose(find(target), COLUMNS), max_length)) }
   end
 
   def test_6_files
@@ -59,7 +59,7 @@ class LsTest < Minitest::Test
       2 4 6
     TEXT
     max_length = find(target).map(&:length).max
-    assert_output(expected) { display (format(transpose(find(target), COLUMNS), max_length)) }
+    assert_output(expected) { display(format(transpose(find(target), COLUMNS), max_length)) }
   end
 
   def test_7_files
@@ -70,7 +70,7 @@ class LsTest < Minitest::Test
       3 6
     TEXT
     max_length = find(target).map(&:length).max
-    assert_output(expected) { display (format(transpose(find(target), COLUMNS), max_length)) }
+    assert_output(expected) { display(format(transpose(find(target), COLUMNS), max_length)) }
   end
 
   def test_8_files
@@ -81,7 +81,7 @@ class LsTest < Minitest::Test
       3 6
     TEXT
     max_length = find(target).map(&:length).max
-    assert_output(expected) { display (format(transpose(find(target), COLUMNS), max_length)) }
+    assert_output(expected) { display(format(transpose(find(target), COLUMNS), max_length)) }
   end
 
   def test_various_file_names
@@ -92,6 +92,6 @@ class LsTest < Minitest::Test
       folder          test-dir1       test-dir2のコピー2
     TEXT
     max_length = find(target).map(&:length).max
-    assert_output(expected) { display (format(transpose(find(target), COLUMNS), max_length)) }
+    assert_output(expected) { display(format(transpose(find(target), COLUMNS), max_length)) }
   end
 end
