@@ -33,7 +33,4 @@ end
 COLUMNS = 3
 target  = ARGV.empty? ? '.' : ARGV[0]
 max_length = find(target).map(&:length).max
-row_matrix = transpose(find(target), COLUMNS)
-row_content = format(row_matrix, max_length)
-display(row_content)
-# display(sort(find(target), COLUMNS))
+display (format(transpose(find(target), COLUMNS), max_length))
