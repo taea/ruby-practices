@@ -4,16 +4,19 @@ def find(dir)
   Dir.foreach(dir).reject { |f| f.start_with?('.') }.sort
 end
 
-def sort(files, cols_count)
+def transpose(files, cols_count)
   rows_count    = (files.length.to_f / cols_count).ceil
   col_matrix    = files.each_slice(rows_count).to_a
-  max_length    = files.map(&:length).max
   row_matrix    =
     Array.new(rows_count) do |row|
       col_matrix.map do |col_arrays|
         col_arrays[row]
-      end
     end
+  end
+end
+
+def format(files, row_matrix)
+  max_length    = files.map(&:length).max
   formatted_row =
     row_matrix.map do |row_files|
       row_files.map do |file|
@@ -30,4 +33,7 @@ end
 
 COLUMNS = 3
 target  = ARGV.empty? ? '.' : ARGV[0]
-display(sort(find(target), COLUMNS))
+row_matrix = transpose(find(target), COLUMNS)
+row_content = format(find(target), row_matrix)
+display(row_content)
+# display(sort(find(target), COLUMNS))
