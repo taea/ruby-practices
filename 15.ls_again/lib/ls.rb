@@ -26,7 +26,7 @@ def format(row_matrix, max_length)
 end
 
 def display(row_content)
-  print row_content.join("\n")
+  puts row_content.join("\n")
 end
 
 COLUMNS = 3
