@@ -97,8 +97,8 @@ class LsTest < Minitest::Test
     target   = File.join(TEST_DIR, 'long_file_name')
     expected = <<~TEXT.chomp
       dir             gb              test-dir2
-      esa             ls.rb           test-dir2のコピー
-      folder          test-dir1       test-dir2のコピー2
+      esa             ls.rb           test-dir2_copy
+      folder          test-dir1       test-dir2_copy2
 
     TEXT
     max_length = find(target).map(&:length).max
