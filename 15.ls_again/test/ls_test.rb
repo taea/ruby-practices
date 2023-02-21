@@ -1,39 +1,45 @@
 # frozen_string_literal: true
 
 require 'minitest/autorun'
-require_relative '../lib/ls'
 
 TEST_DIR = File.join(__dir__, 'ls-sample')
+LOAD_DIR = File.join(__dir__, '../lib/ls.rb')
 
 class LsTest < Minitest::Test
-  def test_1_files
-    target   = File.join(TEST_DIR, '1')
+  def test_1_file
+    target = File.join(TEST_DIR, '1')
     expected = <<~TEXT.chomp
       1
-
     TEXT
-    max_length = find(target).map(&:length).max
-    assert_output(expected) { display(format(transpose(find(target), COLUMNS), max_length)) }
+    $stdout = StringIO.new
+    ARGV[0] = target
+    load LOAD_DIR
+    out = $stdout.string
+    assert_equal expected, out.chomp
   end
 
   def test_2_files
     target   = File.join(TEST_DIR, '2')
     expected = <<~TEXT.chomp
       1 2
-
     TEXT
-    max_length = find(target).map(&:length).max
-    assert_output(expected) { display(format(transpose(find(target), COLUMNS), max_length)) }
+    $stdout = StringIO.new
+    ARGV[0] = target
+    load LOAD_DIR
+    out = $stdout.string
+    assert_equal expected, out.chomp
   end
 
   def test_3_files
     target   = File.join(TEST_DIR, '3')
     expected = <<~TEXT.chomp
       1 2 3
-
     TEXT
-    max_length = find(target).map(&:length).max
-    assert_output(expected) { display(format(transpose(find(target), COLUMNS), max_length)) }
+    $stdout = StringIO.new
+    ARGV[0] = target
+    load LOAD_DIR
+    out = $stdout.string
+    assert_equal expected, out.chomp
   end
 
   def test_4_files
@@ -41,10 +47,12 @@ class LsTest < Minitest::Test
     expected = <<~TEXT.chomp
       1 3
       2 4
-
     TEXT
-    max_length = find(target).map(&:length).max
-    assert_output(expected) { display(format(transpose(find(target), COLUMNS), max_length)) }
+    $stdout = StringIO.new
+    ARGV[0] = target
+    load LOAD_DIR
+    out = $stdout.string
+    assert_equal expected, out.chomp
   end
 
   def test_5_files
@@ -52,10 +60,12 @@ class LsTest < Minitest::Test
     expected = <<~TEXT.chomp
       1 3 5
       2 4
-
     TEXT
-    max_length = find(target).map(&:length).max
-    assert_output(expected) { display(format(transpose(find(target), COLUMNS), max_length)) }
+    $stdout = StringIO.new
+    ARGV[0] = target
+    load LOAD_DIR
+    out = $stdout.string
+    assert_equal expected, out.chomp
   end
 
   def test_6_files
@@ -63,10 +73,12 @@ class LsTest < Minitest::Test
     expected = <<~TEXT.chomp
       1 3 5
       2 4 6
-
     TEXT
-    max_length = find(target).map(&:length).max
-    assert_output(expected) { display(format(transpose(find(target), COLUMNS), max_length)) }
+    $stdout = StringIO.new
+    ARGV[0] = target
+    load LOAD_DIR
+    out = $stdout.string
+    assert_equal expected, out.chomp
   end
 
   def test_7_files
@@ -75,10 +87,12 @@ class LsTest < Minitest::Test
       1 4 7
       2 5
       3 6
-
     TEXT
-    max_length = find(target).map(&:length).max
-    assert_output(expected) { display(format(transpose(find(target), COLUMNS), max_length)) }
+    $stdout = StringIO.new
+    ARGV[0] = target
+    load LOAD_DIR
+    out = $stdout.string
+    assert_equal expected, out.chomp
   end
 
   def test_8_files
@@ -87,10 +101,12 @@ class LsTest < Minitest::Test
       1 4 7
       2 5 8
       3 6
-
     TEXT
-    max_length = find(target).map(&:length).max
-    assert_output(expected) { display(format(transpose(find(target), COLUMNS), max_length)) }
+    $stdout = StringIO.new
+    ARGV[0] = target
+    load LOAD_DIR
+    out = $stdout.string
+    assert_equal expected, out.chomp
   end
 
   def test_various_file_names
@@ -99,9 +115,11 @@ class LsTest < Minitest::Test
       dir             gb              test-dir2
       esa             ls.rb           test-dir2_copy
       folder          test-dir1       test-dir2_copy2
-
     TEXT
-    max_length = find(target).map(&:length).max
-    assert_output(expected) { display(format(transpose(find(target), COLUMNS), max_length)) }
+    $stdout = StringIO.new
+    ARGV[0] = target
+    load LOAD_DIR
+    out = $stdout.string
+    assert_equal expected, out.chomp
   end
 end
