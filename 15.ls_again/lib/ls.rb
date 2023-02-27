@@ -30,7 +30,7 @@ def display(row_content)
   puts row_content.join("\n")
 end
 
-columns = 3
+COLUMNS = 3
 target  = ARGV.empty? ? '.' : ARGV[0]
 max_length = find(target).map(&:length).max
-display(format(transpose(find(target), columns), max_length))
+display(format(transpose(find(target), COLUMNS), max_length))
