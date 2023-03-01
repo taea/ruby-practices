@@ -33,7 +33,7 @@ end
 COLUMNS = 3
 
 if __FILE__ == $PROGRAM_NAME
-  target  = ARGV.empty? ? '.' : ARGV[0]
+  target     = ARGV.empty? ? '.' : ARGV[0]
   max_length = find(target).map(&:length).max
   display(format(transpose(find(target), COLUMNS), max_length))
 end
