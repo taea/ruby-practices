@@ -4,7 +4,6 @@ require 'minitest/autorun'
 require_relative '../lib/ls'
 
 TEST_DIR = File.join(__dir__, 'ls-sample')
-COLUMNS  = 3
 
 class LsTest < Minitest::Test
   def test_1_files
