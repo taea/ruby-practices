@@ -1,8 +1,13 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
+require 'optparse'
 
-def find(dir)
-  Dir.foreach(dir).reject { |f| f.start_with?('.') }.sort
+def find(dir, hidden_files)
+  if hidden_files
+    Dir.foreach(dir).sort
+  else
+    Dir.foreach(dir).reject { |f| f.start_with?('.') }.sort
+  end
 end
 
 def transpose(files, cols_count)
@@ -34,6 +39,7 @@ end
 COLUMNS = 3
 
 if __FILE__ == $PROGRAM_NAME
+  options = ARGV.getopts('a')
   target     = ARGV.empty? ? '.' : ARGV[0]
-  display(format(transpose(find(target), COLUMNS)))
+  display(format(transpose(find(target, options['a']), COLUMNS)))
 end
