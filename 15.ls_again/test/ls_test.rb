@@ -86,4 +86,16 @@ class LsTest < Minitest::Test
     TEXT
     assert_output(expected) { display(format(transpose(find(target, false), COLUMNS))) }
   end
+
+  def a_option
+    target   = File.join(TEST_DIR, 'long_file_name')
+    expected = <<~TEXT
+      .               dir             test-dir1
+      ..              esa             test-dir2
+      .DS_Store       folder          test-dir2_copy
+      .gitkeep        gb              test-dir2_copy2
+      .vscode         ls.rb
+    TEXT
+    assert_output(expected) { display(format(transpose(find(target, true), COLUMNS))) }
+  end
 end
