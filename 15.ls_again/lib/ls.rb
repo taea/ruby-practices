@@ -1,5 +1,6 @@
 #!/usr/bin/env ruby
 # frozen_string_literal: true
+
 require 'optparse'
 
 def find(dir, hidden_files)
@@ -39,7 +40,7 @@ end
 COLUMNS = 3
 
 if __FILE__ == $PROGRAM_NAME
-  options = ARGV.getopts('a')
+  options    = ARGV.getopts('a')
   target     = ARGV.empty? ? '.' : ARGV[0]
   display(format(transpose(find(target, options['a']), COLUMNS)))
 end
