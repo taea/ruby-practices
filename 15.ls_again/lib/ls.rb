@@ -4,10 +4,11 @@
 require 'optparse'
 
 def find(dir, hidden_files)
+  files = Dir.foreach(dir).sort
   if hidden_files
-    Dir.foreach(dir).sort
+    files
   else
-    Dir.foreach(dir).reject { |f| f.start_with?('.') }.sort
+    files.reject { |f| f.start_with?('.') }
   end
 end
 
