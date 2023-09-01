@@ -87,7 +87,7 @@ class LsTest < Minitest::Test
     assert_output(expected) { display(format(transpose(find(target, false), COLUMNS))) }
   end
 
-  def a_option
+  def test_a_option
     target   = File.join(TEST_DIR, 'long_file_name')
     expected = <<~TEXT
       .               dir             test-dir1
