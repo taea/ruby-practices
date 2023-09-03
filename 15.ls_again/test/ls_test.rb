@@ -11,7 +11,7 @@ class LsTest < Minitest::Test
     expected = <<~TEXT
       1
     TEXT
-    assert_output(expected) { display(format(transpose(find(target), COLUMNS))) }
+    assert_output(expected) { display(format(transpose(find(target, false), COLUMNS))) }
   end
 
   def test_2_files
@@ -19,7 +19,7 @@ class LsTest < Minitest::Test
     expected = <<~TEXT
       1 2
     TEXT
-    assert_output(expected) { display(format(transpose(find(target), COLUMNS))) }
+    assert_output(expected) { display(format(transpose(find(target, false), COLUMNS))) }
   end
 
   def test_3_files
@@ -27,7 +27,7 @@ class LsTest < Minitest::Test
     expected = <<~TEXT
       1 2 3
     TEXT
-    assert_output(expected) { display(format(transpose(find(target), COLUMNS))) }
+    assert_output(expected) { display(format(transpose(find(target, false), COLUMNS))) }
   end
 
   def test_4_files
@@ -36,7 +36,7 @@ class LsTest < Minitest::Test
       1 3
       2 4
     TEXT
-    assert_output(expected) { display(format(transpose(find(target), COLUMNS))) }
+    assert_output(expected) { display(format(transpose(find(target, false), COLUMNS))) }
   end
 
   def test_5_files
@@ -45,7 +45,7 @@ class LsTest < Minitest::Test
       1 3 5
       2 4
     TEXT
-    assert_output(expected) { display(format(transpose(find(target), COLUMNS))) }
+    assert_output(expected) { display(format(transpose(find(target, false), COLUMNS))) }
   end
 
   def test_6_files
@@ -54,7 +54,7 @@ class LsTest < Minitest::Test
       1 3 5
       2 4 6
     TEXT
-    assert_output(expected) { display(format(transpose(find(target), COLUMNS))) }
+    assert_output(expected) { display(format(transpose(find(target, false), COLUMNS))) }
   end
 
   def test_7_files
@@ -64,7 +64,7 @@ class LsTest < Minitest::Test
       2 5
       3 6
     TEXT
-    assert_output(expected) { display(format(transpose(find(target), COLUMNS))) }
+    assert_output(expected) { display(format(transpose(find(target, false), COLUMNS))) }
   end
 
   def test_8_files
@@ -74,7 +74,7 @@ class LsTest < Minitest::Test
       2 5 8
       3 6
     TEXT
-    assert_output(expected) { display(format(transpose(find(target), COLUMNS))) }
+    assert_output(expected) { display(format(transpose(find(target, false), COLUMNS))) }
   end
 
   def test_various_file_names
@@ -84,6 +84,18 @@ class LsTest < Minitest::Test
       esa             ls.rb           test-dir2_copy
       folder          test-dir1       test-dir2_copy2
     TEXT
-    assert_output(expected) { display(format(transpose(find(target), COLUMNS))) }
+    assert_output(expected) { display(format(transpose(find(target, false), COLUMNS))) }
+  end
+
+  def test_a_option
+    target   = File.join(TEST_DIR, 'long_file_name')
+    expected = <<~TEXT
+      .               dir             test-dir1
+      ..              esa             test-dir2
+      .DS_Store       folder          test-dir2_copy
+      .gitkeep        gb              test-dir2_copy2
+      .vscode         ls.rb
+    TEXT
+    assert_output(expected) { display(format(transpose(find(target, true), COLUMNS))) }
   end
 end
