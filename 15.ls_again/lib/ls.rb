@@ -12,6 +12,14 @@ def find(dir, hidden_files)
   end
 end
 
+def order(files, reverse)
+  if reverse
+    files.reverse
+  else
+    files
+  end
+end
+
 def transpose(files, cols_count)
   rows_count = (files.length.to_f / cols_count).ceil
   col_matrix = files.each_slice(rows_count).to_a
@@ -41,7 +49,7 @@ end
 COLUMNS = 3
 
 if __FILE__ == $PROGRAM_NAME
-  options    = ARGV.getopts('a')
+  options    = ARGV.getopts('a', 'r')
   target     = ARGV.empty? ? '.' : ARGV[0]
-  display(format(transpose(find(target, options['a']), COLUMNS)))
+  display(format(transpose(order(find(target, options['a']), options['r']), COLUMNS)))
 end
